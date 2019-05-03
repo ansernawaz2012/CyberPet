@@ -10,7 +10,11 @@ namespace CyberPet
     {
         public Cat(string name) : base(name)
         {
-
+            Console.WriteLine($"A pet cat named {name} has been created");
+            CatName = name;
+            playWithPet();
         }
+
+        public string CatName {get; }
     }
 }

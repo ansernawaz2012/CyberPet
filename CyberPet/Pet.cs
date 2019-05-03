@@ -24,14 +24,17 @@ namespace CyberPet
         public int Hunger { get; set; } = 20;
         public int Boredem { get; set; } = 20;
         public int Fatigue { get; set; } = 20;
-        public Boolean isAlive = true;
+        public Boolean petIsAlive = true;
         public Boolean endGame = false;
 
         public void eat ()
         {
-            if (Hunger> 0)
+            if (Hunger >=  50)
             {
-                Hunger -= 10;
+                Hunger -= 50;
+            } else
+            {
+                Hunger = 0;
             }
         }
 
@@ -49,7 +52,14 @@ namespace CyberPet
 
         public void play()
         {
-            Boredem -= 10;
+            if(Boredem>= 10)
+            {
+                Boredem -= 10;
+            } else
+            {
+                Boredem = 0;
+            }
+            Fatigue += 10;
         }
 
         public void rest()
@@ -72,14 +82,50 @@ namespace CyberPet
             Fatigue += 5;
         }
 
-        public void showState()
+        public void showState(string name)
         {
-            Console.WriteLine($"Pet Name: {PetName}");
+            Console.WriteLine($"Pet Name: {name}");
             Console.WriteLine($"Pet Hunger: {Hunger}");
             Console.WriteLine($"Pet Boredem: {Boredem}");
             Console.WriteLine($"Pet Fatigue: {Fatigue}");
 
 
+        }
+
+        public void playWithPet()
+        {
+            while (petIsAlive && !endGame)
+            {
+                showState(PetName);
+                Console.WriteLine($"What would you {PetName} like to do?");
+                Console.WriteLine("p to play, e to eat, s to sleep, r to rest, i to ignore, q to quit");
+                string OwnerInstruction = Console.ReadLine();
+
+                switch (OwnerInstruction)
+                {
+                    case "p":
+                        play();
+                        break;
+                    case "e":
+                        eat();
+                        break;
+                    case "s":
+                        sleep();
+                        break;
+                    case "r":
+                        rest();
+                        break;
+                    case "i":
+                        ignorePet();
+                        break;
+                    case "q":
+                        endGame = true;
+                        break;
+                    default:
+                        break;
+
+                }
+            }
         }
 
     }

@@ -19,14 +19,30 @@ namespace CyberPet
 
            //  Pet myPet = new Pet(name);
 
-            Dog myDog = new Dog(name);
+            switch(petType)
+            {
+                case "c": Cat myCat = new Cat(name);
+                    break;
+                case "d":
+                    Dog myDog = new Dog(name);
+                    break;
+                case "r":
+                    Rabbit myRabbit = new Rabbit(name);
+                    break;
+                default:
+                    break;
 
-            myDog.showState();
+            }
+
+            //Dog myDog = new Dog(name);
+            /*
+            myDog.showState(name);
               
             myDog.eat();
             myDog.play();
             myDog.sleep();
-            myDog.showState();
+            myDog.showState(name);
+            */
             Console.ReadLine();
         }
     }

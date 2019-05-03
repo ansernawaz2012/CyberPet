@@ -11,10 +11,13 @@ namespace CyberPet
     {
         public Dog(string name) : base(name)
         {
+            
             Console.WriteLine($"A pet dog named {name} has been created");
+            DogName = name;
+            playWithPet();
                 }
 
-
+        public string DogName { get; }
         public Boolean canBark = true;
 
         public void playFetch()
@@ -22,15 +25,7 @@ namespace CyberPet
             Fatigue += 10;
         }
 
-        public void playWithDog()
-        {
-            while(isAlive)
-            {
-                showState();
-                Console.WriteLine("What would you like to do?");
-
-            }
-        }
+        
 
 
     }
