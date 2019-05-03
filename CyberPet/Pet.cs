@@ -8,12 +8,15 @@ namespace CyberPet
 {
     public class Pet
     {
+       
         public Pet(string name)
         {
             PetName = name;
           }
-        
+          
 
+
+        
 
         public string PetName { get; set; }
 
@@ -21,6 +24,8 @@ namespace CyberPet
         public int Hunger { get; set; } = 20;
         public int Boredem { get; set; } = 20;
         public int Fatigue { get; set; } = 20;
+        public Boolean isAlive = true;
+        public Boolean endGame = false;
 
         public void eat ()
         {
@@ -58,6 +63,13 @@ namespace CyberPet
             {
                 Fatigue = 0;
             }
+        }
+
+        public void ignorePet()
+        {
+            Hunger += 10;
+            Boredem += 10;
+            Fatigue += 5;
         }
 
         public void showState()

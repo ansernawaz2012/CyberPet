@@ -10,14 +10,23 @@ namespace CyberPet
     {
         static void Main(string[] args)
         {
-            Pet myPet = new Pet("Roger");
 
-            myPet.showState();
+            Console.WriteLine("Choose your new pet: C for cat, D for dog and R for rabbit");
+            string petType = Console.ReadLine();
+              Console.WriteLine("Enter the name of your pet:");
+              string name = Console.ReadLine();
+              
 
-            myPet.eat();
-            myPet.play();
-            myPet.sleep();
-            myPet.showState();
+           //  Pet myPet = new Pet(name);
+
+            Dog myDog = new Dog(name);
+
+            myDog.showState();
+              
+            myDog.eat();
+            myDog.play();
+            myDog.sleep();
+            myDog.showState();
             Console.ReadLine();
         }
     }
