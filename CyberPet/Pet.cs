@@ -27,59 +27,79 @@ namespace CyberPet
         public Boolean petIsAlive = true;
         public Boolean endGame = false;
 
-        public void eat ()
+        
+
+        public void petHunger(int amount)
         {
-            if (Hunger >=  50)
-            {
-                Hunger -= 50;
-            } else
+            Hunger += amount;
+            if (Hunger < 0)
             {
                 Hunger = 0;
             }
+            //else if(Hunger >= 90)
+            //{
+                
+            //}
+        }
+
+        public void petFatigue(int amount)
+        {
+            Fatigue += amount;
+            if (Fatigue < 0)
+            {
+                Fatigue = 0;
+            }
+            //else if(Fatigue >= 90)
+            //{
+
+            //}
+        }
+
+        public void petBoredem(int amount)
+        {
+            Boredem += amount;
+            if (Boredem < 0)
+            {
+                Boredem = 0;
+            }
+            //else if(Boredem >= 90)
+            //{
+
+            //}
+        }
+
+        public void eat()
+        {
+            petHunger(-50);
+
         }
 
         public void sleep()
         {
-            if (Fatigue >= 50)
-            {
-                Fatigue -= 50;
-            
-            } else
-            {
-                Fatigue = 0;
-            }
+            petFatigue(-50);
+
+            petHunger(20);
         }
 
         public void play()
         {
-            if(Boredem>= 10)
-            {
-                Boredem -= 10;
-            } else
-            {
-                Boredem = 0;
-            }
-            Fatigue += 10;
+            petBoredem(-25);
+            petFatigue(10);
+
+            petHunger(15);
         }
 
         public void rest()
         {
-            if (Fatigue >= 20)
-            {
-                Fatigue -= 20;
-
-            }
-            else
-            {
-                Fatigue = 0;
-            }
+            petFatigue(-20);
+            petHunger(5);
         }
 
         public void ignorePet()
         {
-            Hunger += 10;
-            Boredem += 10;
-            Fatigue += 5;
+            petFatigue(10);
+            petBoredem(10);
+            petHunger(10);
         }
 
         public void showState(string name)

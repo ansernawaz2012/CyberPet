@@ -43,7 +43,7 @@ namespace CyberPet
             myDog.sleep();
             myDog.showState(name);
             */
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }
