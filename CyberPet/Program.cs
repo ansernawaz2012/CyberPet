@@ -17,8 +17,7 @@ namespace CyberPet
               string name = Console.ReadLine();
               
 
-           //  Pet myPet = new Pet(name);
-
+           //User defines type of pet to be created
             switch(petType)
             {
                 case "c": Cat myCat = new Cat(name);
@@ -34,16 +33,8 @@ namespace CyberPet
 
             }
 
-            //Dog myDog = new Dog(name);
-            /*
-            myDog.showState(name);
-              
-            myDog.eat();
-            myDog.play();
-            myDog.sleep();
-            myDog.showState(name);
-            */
-            //Console.ReadLine();
+            
+            Console.ReadLine();
         }
     }
 }

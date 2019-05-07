@@ -8,7 +8,7 @@ namespace CyberPet
 {
     public class Pet
     {
-       
+       //constructor for pet
         public Pet(string name)
         {
             PetName = name;
@@ -16,7 +16,7 @@ namespace CyberPet
           
 
 
-        
+        //Declaration of backing fields
 
         public string PetName { get; set; }
 
@@ -26,9 +26,13 @@ namespace CyberPet
         public int Fatigue { get; set; } = 20;
         public Boolean petIsAlive = true;
         public Boolean endGame = false;
+        public Boolean hungerFlag = false;
+        public Boolean boredemFlag = false;
+        public Boolean fatigueFlag = false;
 
-        
 
+
+        //Method to update Hunger field
         public void petHunger(int amount)
         {
             Hunger += amount;
@@ -36,12 +40,18 @@ namespace CyberPet
             {
                 Hunger = 0;
             }
-            //else if(Hunger >= 90)
-            //{
-                
-            //}
+             if(Hunger >= 90)
+            {
+                hungerFlag = true;
+            }
+             else
+            {
+                hungerFlag = false;
+            }
+
         }
 
+        //Method to update Fatigue field
         public void petFatigue(int amount)
         {
             Fatigue += amount;
@@ -49,12 +59,16 @@ namespace CyberPet
             {
                 Fatigue = 0;
             }
-            //else if(Fatigue >= 90)
-            //{
-
-            //}
+            if(Fatigue >= 90)
+            {
+                fatigueFlag = true;
+            }else
+            {
+                fatigueFlag = false;
+            }
         }
 
+        //Method to update Boredem field
         public void petBoredem(int amount)
         {
             Boredem += amount;
@@ -62,10 +76,14 @@ namespace CyberPet
             {
                 Boredem = 0;
             }
-            //else if(Boredem >= 90)
-            //{
-
-            //}
+            if(Boredem >= 90)
+            {
+                boredemFlag = true;
+            }
+            else
+            {
+                boredemFlag = false;
+            }
         }
 
         public void eat()
@@ -100,6 +118,56 @@ namespace CyberPet
             petFatigue(10);
             petBoredem(10);
             petHunger(10);
+        }
+
+        public string checkPetHealth()
+        {
+            string message = "";
+
+            if(hungerFlag)
+            {
+                message += $"{PetName} is hungry. You must feed it!";
+            }
+
+            if (fatigueFlag)
+            {
+                message += $"{PetName} is tired. It needs to rest!";
+            }
+
+            if (boredemFlag)
+            {
+                message += $"{PetName} is bored. You must play with it!";
+            }
+
+            
+            //    if (Boredem >= 120 || Hunger >= 120 || Fatigue >= 120)
+            //{
+            //    petIsAlive = false; 
+                
+            //    message = $"Your pet {PetName} has died!!!";
+            //}
+                if(Hunger >= 120)
+            {
+                petIsAlive = false;
+                message = $"Your pet {PetName} has died of hunger!!!";
+
+
+            }else if (Boredem >=120)
+            {
+                petIsAlive = false;
+                message = $"Your pet {PetName} has died of boredem!!!";
+
+            } else if (Fatigue >= 120)
+            {
+                petIsAlive = false;
+                message = $"Your pet {PetName} has died of exhaustion!!!";
+
+            }
+
+
+
+
+            return message;
         }
 
         public void showState(string name)
@@ -145,6 +213,10 @@ namespace CyberPet
                         break;
 
                 }
+
+                Console.WriteLine(checkPetHealth());
+
+                
             }
         }
 
